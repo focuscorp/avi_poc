@@ -1,0 +1,58 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc">
+	<Panel backgroundDesign="Transparent" class="sapUiNoContentPadding">
+		<content>
+			<layout:HorizontalLayout>
+				<layout:VerticalLayout class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+					<HBox class="sapUiTinyMarginBottom" alignItems="End">
+						<ObjectAttribute title="Flight Number" text="El 4684"/>
+					</HBox>
+					<HBox class="sapUiTinyMarginBottom" alignItems="End">
+						<Label text="Flight Mission" class="sapUiTinyMarginEnd"/>
+						<Text text="humanitarian mission"/>
+					</HBox>
+					<HBox class="sapUiTinyMarginBottom" alignItems="End">
+						<Label text="Responsible Crew" class="sapUiTinyMarginEnd"/>
+						<Text text="Crew 1"/>
+					</HBox>
+				</layout:VerticalLayout>
+				<layout:VerticalLayout class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+					<Title text="Flight Status" class="sapUiTinyMarginBottom"/>
+					<ObjectStatus text="Scheduled" state="Information" class="sapMObjectStatusMedium"/>
+				</layout:VerticalLayout>
+				<layout:VerticalLayout class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+					<HBox class="sapUiTinyMarginBottom" alignItems="End">
+						<ObjectAttribute title="Departure Time" text="26-Apr-2021"/>
+					</HBox>
+					<HBox class="sapUiTinyMarginBottom" alignItems="End">
+						<ObjectAttribute title="Origin" text="Lanzhou, CN"/>
+					</HBox>
+					<HBox class="sapUiTinyMarginBottom" alignItems="End">
+						<ObjectAttribute title="Destination" text="Datong, CN"/>
+					</HBox>
+					<HBox class="sapUiTinyMarginBottom" alignItems="End">
+						<ObjectAttribute title="Arrival Time" text="26-Apr-2021"/>
+					</HBox>
+				</layout:VerticalLayout>
+				<layout:VerticalLayout class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+					<Title text="Flight Time" class="sapUiTinyMarginBottom"/>
+					<ObjectStatus text="02h 40m" icon="sap-icon://date-time" class="sapMObjectStatusMedium"/>
+				</layout:VerticalLayout>
+				<layout:VerticalLayout class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+					<Title text="Flight Distance" class="sapUiTinyMarginBottom"/>
+					<ObjectStatus text="588 mi" icon="sap-icon://flight" class="sapMObjectStatusMedium"/>
+				</layout:VerticalLayout>
+				<layout:VerticalLayout class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+					<HBox class="sapUiTinyMarginBottom" alignItems="End">
+						<ObjectAttribute title="Craft Type" text="73H"/>
+					</HBox>
+					<HBox class="sapUiTinyMarginBottom" alignItems="End">
+						<ObjectAttribute title="Tail Number" text="PH-BCG"/>
+					</HBox>
+					<HBox class="sapUiTinyMarginBottom" alignItems="End">
+						<ObjectAttribute title="Aircraft Equipment" text="Boeing 737-800 "/>
+					</HBox>
+				</layout:VerticalLayout>
+			</layout:HorizontalLayout>
+		</content>
+	</Panel>
+</core:FragmentDefinition>

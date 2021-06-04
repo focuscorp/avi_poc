@@ -1,0 +1,10 @@
+[{
+    "InstanceId": 0,
+    "InstanceName": "Cockpit Monitoring"
+}, {
+    "InstanceId": 1,
+    "InstanceName": "MicroService_1 Monitoring"
+}, {
+    "InstanceId": 2,
+    "InstanceName": "MicroService_2 Monitoring"
+}]

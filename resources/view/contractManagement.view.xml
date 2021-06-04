@@ -1,0 +1,131 @@
+<mvc:View controllerName="detectionAnomaly.app.controller.Main" height="100%" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core"
+	xmlns:layout="sap.ui.layout" xmlns="sap.m" xmlns:f="sap.f" xmlns:fb="sap.ui.comp.filterbar" xmlns:vm="sap.ui.comp.variants">
+	<f:ShellBar id="idShellBarOverview1" class="myShellbar" title="Aircraft UN" showCopilot="false"
+		homeIcon="https://www.sap.com/dam/application/shared/logos/sap-logo-svg.svg.adapt.svg/1493030643828.svg" showSearch="false"
+		showNotifications="false" showProductSwitcher="false" showNavButton="true" navButtonPressed="onNavBack"></f:ShellBar >
+	<f:DynamicPage id="dynamicPageId2" headerExpanded="{/headerExpanded}">
+		<!-- DynamicPage Title -->
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<vm:VariantManagement standardItemText="Contract Management"></vm:VariantManagement>
+				</f:heading>
+				<f:actions>
+					<ToolbarSpacer/>
+					<Button text="Home" icon="sap-icon://home" visible="false"/>
+				</f:actions>
+			</f:DynamicPageTitle>
+		</f:title>
+		<!-- DynamicPage Header -->
+		<f:header>
+			<f:DynamicPageHeader pinnable="true">
+				<fb:FilterBar reset="onReset" search="onSearch" showRestoreButton="true" showClearButton="true">
+					<fb:filterGroupItems>
+						<fb:FilterGroupItem groupName="__$INTERNAL$" name="AA" label="Contract Id" partOfCurrentVariant="true" visibleInFilterBar="true">
+							<fb:control>
+								<Input id="multiInput2" width="50%" showValueHelp="false"></Input>
+							</fb:control>
+						</fb:FilterGroupItem>
+						<fb:FilterGroupItem groupName="__$INTERNAL$" name="A2A" label="Contract Name" partOfCurrentVariant="true" visibleInFilterBar="true">
+							<fb:control>
+								<Input width="50%" showValueHelp="false"></Input>
+							</fb:control>
+						</fb:FilterGroupItem>
+						<fb:FilterGroupItem groupName="__$INTERNAL$" name="A" label="Effective Date" partOfCurrentVariant="true" visibleInFilterBar="true">
+							<fb:control>
+								<DateTimePicker id="DTP7" valueFormat="yyyy-MM-dd-HH-mm-ss" minutesStep="3" secondsStep="5" change="handleChange"
+									class="sapUiSmallMarginBottom"/>
+							</fb:control>
+						</fb:FilterGroupItem>
+						<fb:FilterGroupItem groupName="__$INTERNAL$" name="Ag" label="Expiration Date" partOfCurrentVariant="true" visibleInFilterBar="true">
+							<fb:control>
+								<DateTimePicker id="DgTP7" valueFormat="yyyy-MM-dd-HH-mm-ss" minutesStep="3" secondsStep="5" change="handleChange"
+									class="sapUiSmallMarginBottom"/>
+							</fb:control>
+						</fb:FilterGroupItem>
+						<fb:FilterGroupItem groupName="__$INTERNAL$" name="B" label="Contract Type" labelTooltip="Tooltip Example" mandatory="true"
+							partOfCurrentVariant="true" visibleInFilterBar="true">
+							<fb:control>
+								<ComboBox >
+									<items>
+										<core:Item key="001" text="EMEA"/>
+										<core:Item key="002" text="America"/>
+										<core:Item key="003" text="APJ"/>
+									</items>
+								</ComboBox>
+							</fb:control>
+						</fb:FilterGroupItem>
+						<fb:FilterGroupItem groupName="__$INTERNAL$" name="Bhh" label="Status" labelTooltip="Tooltip Example" mandatory="true"
+							partOfCurrentVariant="true" visibleInFilterBar="true">
+							<fb:control>
+								<Select forceSelection="false" selectedKey="All">
+									<core:Item key="All" text="All"></core:Item>
+									<core:Item key="Scheduled" text="Scheduled"/>
+									<core:Item key="Arrived" text="Arrived"/>
+									<core:Item key="Departed" text="Departed"/>
+									<core:Item key="Departed" text="Canceled"/>
+								</Select>
+							</fb:control>
+						</fb:FilterGroupItem>
+					</fb:filterGroupItems>
+				</fb:FilterBar>
+			</f:DynamicPageHeader>
+		</f:header>
+		<!-- DynamicPage Content -->
+		<f:content>
+			<Table class="sapUiResponsiveMargin" id="idTable" headerText="Contracts List" updateFinished="_onTableUpdateFinished"
+				mode="SingleSelectMaster" selectionChange="onPressItem" width="auto" growing="true" growingThreshold="10">
+				<headerToolbar>
+					<OverflowToolbar>
+						<content>
+							<Title text="Contracts List" level="H2"/>
+							<ToolbarSpacer/>
+							<Button text="New Contract" type="Emphasized" icon="sap-icon://add" press=".onSelectDialogPress" class="sapUiSmallMarginBottom"/>
+						</content>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="Contract Number"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="Contract Name"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="Effective Date"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="Expiration Date"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="Contract Type"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="Status"/>
+					</Column>
+					<!--<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="Craft Type"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="Tail Number"/>
+					</Column>-->
+				</columns>
+				<items>
+					<ColumnListItem vAlign="Middle">
+						<cells>
+							<ObjectIdentifier title="{Model>/ContractNumber}" text="{Model>/ContractNumber}"/>
+							<ObjectStatus class="sapUiSmallMarginBottom" text="{Status}"/>
+							<ObjectIdentifier title="{Model>/ContractName}" text="On Time"/>
+							<ObjectIdentifier title="{Model>/EffectiveDate}" text="On Time"/>
+							<Text text="{Model>/ExpirationDate}"></Text>
+							<Text text="{Model>/ContractType}"></Text>
+							<!--	<Text text="{CraftType}"></Text>
+							<Text text="{TailNumber}"></Text>-->
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</f:content>
+		<!-- DynamicPage Footer -->
+	</f:DynamicPage>
+</mvc:View>

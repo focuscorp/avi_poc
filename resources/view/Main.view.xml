@@ -1,0 +1,97 @@
+<mvc:View xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:f="sap.f" xmlns:suite="sap.suite.ui.commons" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:smartchart="sap.ui.comp.smartchart"
+	controllerName="detectionAnomaly.app.controller.Main" xmlns:mc="sap.suite.ui.microchart">
+	<App id="app">
+		<pages>
+			<Page id="page" showHeader="false" showSubHeader="false" enableScrolling="true">
+				<f:ShellBar id="idShellBarOverview1" class="myShellbar" title="Aviation POC" showCopilot="false" showSearch="false"
+					showNotifications="false" showProductSwitcher="false"/>
+				<content>
+					<HBox>
+						<TileContent footer="Current Quarter" unit="EUR" class="sapUiSmallMargin">
+							<NumericContent scale="M" value="1.96" valueColor="Error" indicator="Up"/>
+						</TileContent>
+						<TileContent footer="Leave Requests" class="sapUiSmallMargin">
+							<NumericContent value="3" icon="sap-icon://travel-expense"/>
+						</TileContent>
+						<TileContent footer="Hours since last Activity" class="sapUiSmallMargin">
+							<NumericContent value="9" icon="sap-icon://locked"/>
+						</TileContent>
+					</HBox>
+					<SlideTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" transitionTime="250" displayTime="2500">
+						<GenericTile backgroundImage="https://pbs.twimg.com/media/EVCTfjxWsAMV2wT.jpg" frameType="TwoByOne" press="onPress">
+							<TileContent footer="August 21, 2016">
+								<NewsContent contentText="Wind Map: Monitoring Real-Time and Forecasted Wind Conditions across the Globe" subheader="Today, SAP News"/>
+							</TileContent>
+						</GenericTile>
+						<GenericTile backgroundImage="test-resources/sap/m/demokit/sample/SlideTile/images/NewsImage2.png" frameType="TwoByOne" state="Failed">
+							<TileContent footer="August 21, 2016">
+								<NewsContent contentText="SAP Unveils Powerful New Player Comparision Tool Exclusively on NFL.com" subheader="Today, SAP News"/>
+							</TileContent>
+						</GenericTile>
+					</SlideTile>
+					<TileContent footer="April 21, 2021" class="sapUiSmallMargin">
+						<NewsContent contentText="SAP Unveils Powerful New Player Comparison Tool Exclusively on NFL.com" subheader="SAP News"/>
+					</TileContent>
+					<HBox>
+						<GenericTile header="Budget Management" subheader="Expenses By Region" frameType="TwoByOne" press="press" class="sapUiTinyMargin">
+							<TileContent footer="Unit, Notification" unit="EUR">
+								<mc:HarveyBallMicroChart total="100" size="Responsive" alignContent="Right" totalScale="Mrd">
+									<mc:items>
+										<mc:HarveyBallMicroChartItem fraction="15" color="Error" fractionScale="Mrd"/>
+									</mc:items>
+								</mc:HarveyBallMicroChart>
+							</TileContent>
+							<TileContent footer="Unit, Notification" unit="EUR">
+								<mc:HarveyBallMicroChart total="100" size="Responsive" alignContent="Right" totalScale="Mrd">
+									<mc:items>
+										<mc:HarveyBallMicroChartItem fraction="15" color="Error" fractionScale="Mrd"/>
+									</mc:items>
+								</mc:HarveyBallMicroChart>
+							</TileContent>
+						</GenericTile>
+						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Fleet Management" press="onPress" subheader="">
+							<TileContent>
+								<NumericContent icon="sap-icon://flight"/>
+							</TileContent>
+						</GenericTile>
+						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Flight Operations" subheader="Subtitle" press="onPress">
+							<TileContent>
+								<NumericContent icon="sap-icon://appointment-2"/>
+							</TileContent>
+						</GenericTile>
+					</HBox>
+					<HBox></HBox>
+					<HBox>
+						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Contracts Management" subheader="Subtitle" press="onPress">
+							<TileContent unit="EUR" footer="Current Quarter">
+								<ImageContent src="sap-icon://decision"/>
+							</TileContent>
+						</GenericTile>
+						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Invoicing and Workflows Management" press="onPress">
+							<TileContent unit="Unit">
+								<NumericContent scale="%" value="" valueColor="Critical" indicator="Up" withMargin="false" icon="sap-icon://collections-insight"/>
+							</TileContent>
+						</GenericTile>
+						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Reporting" press="onPress">
+							<TileContent unit="Unit">
+								<NumericContent value="" icon="sap-icon://bbyd-dashboard" withMargin="false"/>
+							</TileContent>
+						</GenericTile>
+						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Insurance Cost Management" press="onPress">
+							<TileContent unit="Unit">
+								<NumericContent scale="%" value="12" valueColor="Critical" icon="sap-icon://insurance-life" indicator="Up" withMargin="false"/>
+							</TileContent>
+						</GenericTile>
+						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Crew Management" press="onPress">
+							<TileContent unit="Unit">
+								<NumericContent value="3" icon="sap-icon://employee"/>
+							</TileContent>
+						</GenericTile>
+					</HBox>
+				</content>
+				<footer></footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

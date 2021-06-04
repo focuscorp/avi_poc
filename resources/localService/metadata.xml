@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+<edmx:DataServices m:DataServiceVersion="2.0">
+<Schema Namespace="MockupModel" sap:schema-version="0" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+<EntityType Name="Scan" sap:service-schema-version="1" sap:service-version="1" sap:semantics="aggregate" sap:content-version="1">
+<Key>
+<PropertyRef Name="ScanId"/>
+</Key>
+<Property Name="ScanId" Type="Edm.Int32" sap:filterable="false"/>
+<Property Name="ScanDay" Type="Edm.String" MaxLength="8" sap:aggregation-role="dimension" sap:label="Scan Day"/>
+<Property Name="ScanHour" Type="Edm.Int64" MaxLength="4" sap:aggregation-role="dimension" sap:label="Scan Hour"/>
+<Property Name="ScanStatus" Type="Edm.Decimal" sap:aggregation-role="measure" sap:label="Scan Status"/>
+<Property Name="System" Type="Edm.String" MaxLength="50" sap:label="Scan System" sap:filterable="true" Nullable="false"
+sap:value-list="fixed-values"/>
+<Property Name="Metric" Type="Edm.String" MaxLength="50" sap:label="Scan Metric" sap:filterable="true" Nullable="false"
+sap:value-list="fixed-values"/>
+<Property Name="Instance" Type="Edm.String" MaxLength="50" sap:label="Scan Instance" sap:filterable="true" Nullable="false"
+sap:value-list="fixed-values"/>
+<NavigationProperty Name="Anomalies" Relationship="MockupModel.Scan_Anomaly" FromRole="FromRole_Scan_Anomaly" ToRole="ToRole_Scan_Anomaly"/>
+<NavigationProperty Name="ScanSystems" Relationship="MockupModel.Scan_System" FromRole="FromRole_Scan_System" ToRole="ToRole_Scan_System"/>
+<NavigationProperty Name="ScanMetric" Relationship="MockupModel.Scan_Metric" FromRole="FromRole_Scan_Metric" ToRole="ToRole_Scan_Metric"/>
+<NavigationProperty Name="ScanInstance" Relationship="MockupModel.Scan_Instance" FromRole="FromRole_Scan_Instance"
+ToRole="ToRole_Scan_Instance"/>
+</EntityType>
+<EntityType Name="Anomaly">
+<Key>
+<PropertyRef Name="AnomalyId"/>
+</Key>
+<Property Name="AnomalyId" Type="Edm.Int32" sap:filterable="false" sap:label="Anomaly Id"/>
+<Property Name="ScanId" Type="Edm.Int32" sap:filterable="false"/>
+<Property Name="AnomalyTime" Type="Edm.String" MaxLength="50" sap:label="Scan Time" sap:filterable="false" Nullable="false"/>
+<Property Name="AnomalyStatus" Type="Edm.String" MaxLength="50" sap:label="Status" sap:filterable="false" Nullable="false"/>
+<Property Name="AnomalyType" Type="Edm.String" MaxLength="50" sap:label="Anomaly Type" sap:filterable="false" Nullable="false"/>
+<Property Name="AnomalyDescription" Type="Edm.String" MaxLength="50" sap:label="Anomaly Description" sap:filterable="false" Nullable="false"/>
+<Property Name="AnomalyMessage" Type="Edm.String" MaxLength="1000" sap:label="Anomaly Message" sap:filterable="false" Nullable="false"/>
+<Property Name="System" Type="Edm.String" MaxLength="50" sap:label="Scan System" sap:filterable="true" Nullable="false"
+sap:value-list="fixed-values"/>
+<Property Name="Metric" Type="Edm.String" MaxLength="50" sap:label="Scan Metric" sap:filterable="true" Nullable="false"
+sap:value-list="fixed-values"/>
+<Property Name="Instance" Type="Edm.String" MaxLength="50" sap:label="Scan Instance" sap:filterable="true" Nullable="false"
+sap:value-list="fixed-values"/>
+<NavigationProperty Name="Occurrences" Relationship="MockupModel.Anomaly_AnomalyOccurrence" FromRole="FromRole_Anomaly_AnomalyOccurrence" ToRole="ToRole_Anomaly_AnomalyOccurrence"/>
+
+</EntityType>
+<EntityType Name="AnomalyOccurrence">
+<Key>
+<PropertyRef Name="AnomalyOccurrenceId"/>
+</Key>
+<Property Name="AnomalyOccurrenceId" Type="Edm.Int32" sap:filterable="false"/>
+<Property Name="AnomalyId" Type="Edm.Int32" sap:filterable="true"/>
+<Property Name="OccurrenceId" Type="Edm.Int32" MaxLength="4" sap:display-format="UpperCase" sap:label="Occurrence Id" sap:filterable="false"/>
+<Property Name="AnomalyOccValue" Type="Edm.Int32" MaxLength="25" sap:aggregation-role="measure"  Nullable="false" sap:filterable="false"
+sap:label="Occurrence"/>
+<Property Name="AnomalyOccuDate" Type="Edm.String" MaxLength="25" sap:aggregation-role="dimension"  Nullable="false" sap:filterable="false" sap:label="Date"/>
+</EntityType>
+<EntityType Name="System">
+<Key>
+<PropertyRef Name="SystemId"/>
+</Key>
+<Property Name="SystemId" Type="Edm.Int32" MaxLength="4" sap:display-format="UpperCase" sap:label="System Id" sap:filterable="false"/>
+<Property Name="SystemName" Type="Edm.String" MaxLength="25" sap:filterable="true" sap:label="System Name"/>
+<NavigationProperty Name="Instances" Relationship="MockupModel.System_Instances" FromRole="FromRole_System_Instances"
+ToRole="ToRole_System_Instances"/>
+</EntityType>
+<EntityType Name="Instance">
+<Key>
+<PropertyRef Name="InstanceId"/>
+</Key>
+<Property Name="InstanceId" Type="Edm.Int32" MaxLength="4" sap:display-format="UpperCase" sap:label="Instance Id" sap:filterable="false"/>
+<Property Name="InstanceName" Type="Edm.String" MaxLength="25" sap:label="Instance Name"/>
+<NavigationProperty Name="Metric" Relationship="MockupModel.Instance_Metric" FromRole="FromRole_Instance_Metric"
+ToRole="ToRole_Instance_Metric"/>
+</EntityType>
+<EntityType Name="Metric">
+<Key>
+<PropertyRef Name="MetricId"/>
+</Key>
+<Property Name="MetricId" Type="Edm.Int32" MaxLength="4" sap:label="Metric Id" sap:filterable="false"/>
+<Property Name="MetricName" Type="Edm.String" MaxLength="25" sap:label="Metric Name"/>
+</EntityType>
+
+<Association Name="Anomaly_AnomalyOccurrence" sap:content-version="1">
+<End Type="MockupModel.Anomaly" Multiplicity="1" Role="FromRole_Anomaly_AnomalyOccurrence"/>
+<End Type="MockupModel.AnomalyOccurrence" Multiplicity="*" Role="ToRole_Anomaly_AnomalyOccurrence"/>
+<ReferentialConstraint>
+<Principal Role="FromRole_Anomaly_AnomalyOccurrence">
+<PropertyRef Name="AnomalyId"/>
+</Principal>
+<Dependent Role="ToRole_Anomaly_AnomalyOccurrence">
+<PropertyRef Name="AnomalyId"/>
+</Dependent>
+</ReferentialConstraint>
+</Association>
+<Association Name="Scan_Anomaly" sap:content-version="1">
+<End Type="MockupModel.Scan" Multiplicity="1" Role="FromRole_Scan_Anomaly"/>
+<End Type="MockupModel.Anomaly" Multiplicity="*" Role="ToRole_Scan_Anomaly"/>
+<ReferentialConstraint>
+<Principal Role="FromRole_Scan_Anomaly">
+<PropertyRef Name="ScanId"/>
+</Principal>
+<Dependent Role="ToRole_Scan_Anomaly">
+<PropertyRef Name="ScanId"/>
+</Dependent>
+</ReferentialConstraint>
+</Association>
+<Association Name="Scan_Metric" sap:content-version="1">
+<End Type="MockupModel.Scan" Multiplicity="1" Role="FromRole_Scan_Metric"/>
+<End Type="MockupModel.Metric" Multiplicity="*" Role="ToRole_Scan_Metric"/>
+</Association>
+<Association Name="Scan_System" sap:content-version="1">
+<End Type="MockupModel.Scan" Multiplicity="1" Role="FromRole_Scan_System"/>
+<End Type="MockupModel.System" Multiplicity="*" Role="ToRole_Scan_System"/>
+</Association>
+<Association Name="Scan_Instance" sap:content-version="1">
+<End Type="MockupModel.Scan" Multiplicity="1" Role="FromRole_Scan_Instance"/>
+<End Type="MockupModel.Instance" Multiplicity="*" Role="ToRole_Scan_Instance"/>
+</Association>
+<Association Name="System_Instances" sap:content-version="1">
+<End Type="MockupModel.System" Multiplicity="1" Role="FromRole_System_Instances"/>
+<End Type="MockupModel.Instance" Multiplicity="*" Role="ToRole_System_Instances"/>
+</Association>
+<Association Name="Instance_Metric" sap:content-version="1">
+<End Type="MockupModel.Instance" Multiplicity="1" Role="FromRole_Instance_Metric"/>
+<End Type="MockupModel.Metric" Multiplicity="*" Role="ToRole_Instance_Metric"/>
+</Association>
+<EntityContainer Name="MockupModel_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+<EntitySet Name="Scans" EntityType="MockupModel.Scan" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+sap:content-version="1"/>
+<EntitySet Name="Anomalies" EntityType="MockupModel.Anomaly" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+sap:content-version="1" sap:countable="true"/>
+<EntitySet Name="Systems" EntityType="MockupModel.System"/>
+<EntitySet Name="Instances" EntityType="MockupModel.Instance"/>
+<EntitySet Name="Metrics" EntityType="MockupModel.Metric"/>
+<EntitySet Name="ErrorOccurrences" EntityType="MockupModel.AnomalyOccurrence"/>
+<AssociationSet Name="System_Instances_AssocSet" Association="MockupModel.System_Instances" sap:creatable="false" sap:updatable="false"
+sap:deletable="false" sap:content-version="1">
+<End EntitySet="Systems" Role="FromRole_System_Instances"/>
+<End EntitySet="Instances" Role="ToRole_System_Instances"/>
+</AssociationSet>
+<AssociationSet Name="Scan_System_AssocSet" Association="MockupModel.Scan_System" sap:creatable="false" sap:updatable="false"
+sap:deletable="false" sap:content-version="1">
+<End EntitySet="Scans" Role="FromRole_Scan_System"/>
+<End EntitySet="Systems" Role="ToRole_Scan_System"/>
+</AssociationSet>
+<AssociationSet Name="Scan_Metric_AssocSet" Association="MockupModel.Scan_Metric" sap:creatable="false" sap:updatable="false"
+sap:deletable="false" sap:content-version="1">
+<End EntitySet="Scans" Role="FromRole_Scan_Metric"/>
+<End EntitySet="Metrics" Role="ToRole_Scan_Metric"/>
+</AssociationSet>
+<AssociationSet Name="Scan_Instance_AssocSet" Association="MockupModel.Scan_Instance" sap:creatable="false" sap:updatable="false"
+sap:deletable="false" sap:content-version="1">
+<End EntitySet="Scans" Role="FromRole_Scan_Instance"/>
+<End EntitySet="Instances" Role="ToRole_Scan_Instance"/>
+</AssociationSet>
+<AssociationSet Name="Instance_Metric_AssocSet" Association="MockupModel.Instance_Metric" sap:creatable="false" sap:updatable="false"
+sap:deletable="false" sap:content-version="1">
+<End EntitySet="Instances" Role="FromRole_Instance_Metric"/>
+<End EntitySet="Metrics" Role="ToRole_Instance_Metric"/>
+</AssociationSet>
+<AssociationSet Name="Scan_Anomaly_AssocSet" Association="MockupModel.Scan_Anomaly" sap:creatable="false" sap:updatable="false"
+sap:deletable="false" sap:content-version="1">
+<End EntitySet="Scans" Role="FromRole_Scan_Anomaly"/>
+<End EntitySet="Anomalies" Role="ToRole_Scan_Anomaly"/>
+</AssociationSet>
+<AssociationSet Name="Anomaly_AnomalyOccurrence_AssocSet" Association="MockupModel.Anomaly_AnomalyOccurrence" sap:creatable="false" sap:updatable="false"
+sap:deletable="false" sap:content-version="1">
+<End EntitySet="Anomalies" Role="FromRole_Anomaly_AnomalyOccurrence"/>
+<End EntitySet="ErrorOccurrences" Role="ToRole_Anomaly_AnomalyOccurrence"/>
+</AssociationSet>
+</EntityContainer>
+</Schema>
+</edmx:DataServices>
+</edmx:Edmx>

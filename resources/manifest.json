@@ -1,0 +1,175 @@
+{
+	"_version": "1.12.0",
+	"sap.app": {
+		"id": "detectionAnomaly.app",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"resources": "resources.json",
+		"ach": "ach",
+		"dataSources": {
+			"mainService": {
+				"uri": "/here/goes/your/serviceUrl/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"annotations": [
+						"annotation"
+					]
+				}
+			},
+			"annotation": {
+				"type": "ODataAnnotation",
+				"uri": "annotations/annotation.xml",
+				"settings": {
+					"localUri": "annotations/annotation.xml"
+				}
+			}
+		},
+		"sourceTemplate": {
+			"id": "html5moduletemplates.basicSAPUI5ApplicationProjectModule",
+			"version": "1.40.12"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"flexEnabled": false,
+		"rootView": {
+			"viewName": "detectionAnomaly.app.view.Main",
+			"type": "XML",
+			"async": true,
+			"id": "Main"
+		},
+		"dependencies": {
+			"minUI5Version": "1.60.2",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ui.layout": {},
+				"sap.f": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"": {
+				"dataSource": "mainService"
+			},
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "detectionAnomaly.app.i18n.i18n"
+				}
+			},
+			"@i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/i18n.properties"
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "detectionAnomaly.app.view",
+				"controlAggregation": "pages",
+				"controlId": "app",
+				"clearControlAggregation": false
+			},
+			"routes": [
+				{
+					"name": "RouteMain",
+					"pattern": "RouteMain",
+					"target": [
+						"Main"
+					]
+				},{
+                    "pattern": "flightManagement",
+                    "name": "flightManagement",
+                    "target": "flightManagement"
+                },{
+                    "pattern": "flightDetails",
+                    "name": "flightDetails",
+                    "target": "flightDetails"
+                },{
+                    "pattern": "contractManagement",
+                    "name": "contractManagement",
+                    "target": "contractManagement"
+                },{
+                    "pattern": "crewManagement",
+                    "name": "crewManagement",
+                    "target": "crewManagement"
+                },{
+                    "pattern": "budgetManagement",
+                    "name": "budgetManagement",
+                    "target": "budgetManagement"
+                }
+				
+			],
+			"targets": {
+				"Main": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewId": "Main",
+					"viewName": "Main"
+				},
+				"flightManagement": {
+                    "viewId": "flightManagement",
+                    "viewName": "flightManagement",
+                    "viewLevel": 3
+                },
+                "flightDetails": {
+                    "viewId": "flightDetails",
+                    "viewName": "flightDetails",
+                    "viewLevel": 3
+                },
+                
+                "contractManagement": {
+                    "viewId": "contractManagement",
+                    "viewName": "contractManagement",
+                    "viewLevel": 3
+                },
+                "crewManagement": {
+                    "viewId": "crewManagement",
+                    "viewName": "crewManagement",
+                    "viewLevel": 3
+                },
+                "budgetManagement": {
+                    "viewId": "budgetManagement",
+                    "viewName": "budgetManagement",
+                    "viewLevel": 3
+                }
+			}
+		}
+	}
+
+}

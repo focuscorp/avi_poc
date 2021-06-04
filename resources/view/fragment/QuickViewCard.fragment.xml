@@ -1,0 +1,52 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:grid="sap.ui.layout.cssgrid" xmlns:f="sap.f"
+	xmlns:core="sap.ui.core" xmlns:t="sap.tnt">
+	<VBox>
+		<List id="myList" headerText="Flight Status">
+			<items>
+				<StandardListItem title="El 4684" description="Shandong Airlines" icon="sap-icon://flight" iconInset="false" info="Scheduled On time"
+					infoState="Information" highlight="Information"/>
+			</items>
+		</List>
+		<f:GridList id="gridList2" headerText="">
+			<f:customLayout>
+				<grid:GridBoxLayout boxWidth="39.5rem"/>
+			</f:customLayout>
+			<f:GridListItem>
+				<VBox height="100%" class="sapUiSmallMargin">
+					<layoutData>
+						<FlexItemData growFactor="1" shrinkFactor="0"/><!-- Don't shrink below minimum size. Fill space if available. --></layoutData>
+					<core:Icon src="sap-icon://journey-depart" size="2.625rem" color="Default" class="sapUiTinyMarginBottom"/>
+					<Title text="Departure" wrapping="true"/>
+					<Text text="Lanzhou, CN Lanzhou Zhongchuan International Airport" wrapping="true"/>
+					<ObjectAttribute title="Flight Departure Times" text="28-Apr-2021"/>
+					<FlexBox alignItems="Start" justifyContent="SpaceBetween">
+						<ObjectAttribute title="Scheduled" text="18:45 CST"/>
+						<ObjectAttribute title="Estimated" text="--"/>
+					</FlexBox>
+					<FlexBox alignItems="Start" justifyContent="SpaceBetween">
+						<ObjectAttribute title="Terminal" text="N/A"/>
+						<ObjectAttribute title="Gate" text="N/A"/>
+					</FlexBox>
+				</VBox>
+			</f:GridListItem>
+			<f:GridListItem>
+				<VBox height="100%" class="sapUiSmallMargin">
+					<layoutData>
+						<FlexItemData growFactor="1" shrinkFactor="0"/><!-- Don't shrink below minimum size. Fill space if available. --></layoutData>
+					<core:Icon src="sap-icon://journey-arrive" size="2.625rem" color="Default" class="sapUiTinyMarginBottom"/>
+					<Title text="Arrival" wrapping="true"/>
+					<Text text="Datong, CN Datong Airport" wrapping="true"/>
+					<ObjectAttribute title="Flight Departure Times" text="28-Apr-2021"/>
+					<FlexBox alignItems="Start" justifyContent="SpaceBetween">
+						<ObjectAttribute title="Scheduled" text="20:35 CST"/>
+						<ObjectAttribute title="Estimated" text="--"/>
+					</FlexBox>
+					<FlexBox alignItems="Start" justifyContent="SpaceBetween">
+						<ObjectAttribute title="Terminal" text="N/A"/>
+						<ObjectAttribute title="Gate" text="N/A"/>
+					</FlexBox>
+				</VBox>
+			</f:GridListItem>
+		</f:GridList>
+	</VBox>
+</core:FragmentDefinition>

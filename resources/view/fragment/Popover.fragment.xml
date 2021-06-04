@@ -1,0 +1,101 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core">
+	<Dialog title="Schedule Flight">
+		<f:SimpleForm id="SimpleFormToolbar" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="3" labelSpanM="4"
+			labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1"
+			singleContainerFullSize="false" ariaLabelledBy="Title1">
+			<f:content>
+				<Toolbar ariaLabelledBy="Title2">
+					<Title id="Title2" text="Flight Times"/>
+					<ToolbarSpacer/>
+					<Button icon="sap-icon://settings"/>
+				</Toolbar>
+				<Label text="Departure Time"/>
+				<DateTimePicker id="D5P6" valueFormat="yyyy-MM-dd-HH-mm-ss" minutesStep="3" secondsStep="5" change="handleChange"
+					class="sapUiSmallMarginBottom"/>
+				<Label text="Arrival Time"/>
+				<DateTimePicker id="DT5P6" valueFormat="yyyy-MM-dd-HH-mm-ss" minutesStep="3" secondsStep="5" change="handleChange"
+					class="sapUiSmallMarginBottom"/>
+				<Label text="Origin"/>
+				<Select id="origin" selectedKey="{Country}">
+					<items>
+						<core:Item text="England" key="England"/>
+						<core:Item text="Germany" key="Germany"/>
+						<core:Item text="USA" key="USA"/>
+					</items>
+				</Select>
+				<Select id="origin2" selectedKey="{Country}">
+					<items>
+						<core:Item text="Airport UK" key="England"/>
+						<core:Item text="Germany" key="Germany"/>
+						<core:Item text="USA" key="USA"/>
+					</items>
+				</Select>
+				<Label text="Destination"/>
+				<Select id="destination" selectedKey="{Country}">
+					<items>
+						<core:Item text="England" key="England"/>
+						<core:Item text="Germany" key="Germany"/>
+						<core:Item text="USA" key="USA"/>
+					</items>
+				</Select>
+				<Select id="origi2" selectedKey="{Country}">
+					<items>
+						<core:Item text="Airport UK" key="England"/>
+						<core:Item text="Germany" key="Germany"/>
+						<core:Item text="USA" key="USA"/>
+					</items>
+				</Select>
+				<Toolbar ariaLabelledBy="Title3">
+					<Title id="Title3" text="Flight Mission"/>
+					<ToolbarSpacer/>
+					<Button icon="sap-icon://settings"/>
+				</Toolbar>
+				<Label text="Aircraft"/>
+				<Select id="country" selectedKey="{Country}">
+					<items>
+						<core:Item text="Bombardier Dash 8" key="England"/>
+						<core:Item text="Embraer 135" key="Germany"/>
+						<core:Item text="Dornier 328" key="USA"/>
+					</items>
+				</Select>
+				<Label text="Mission Name"/>
+				<Input value="{Url}" type="Url"/>
+				<Label text="Mission Type"/>
+				<RadioButtonGroup id="groupE" valueState="Information">
+					<RadioButton text="Humanitarian" selected="true"/>
+					<RadioButton text="Peacekeeping"/>
+					<RadioButton text=" UN representatives visiting"/>
+				</RadioButtonGroup>
+				<Toolbar ariaLabelledBy="Title3">
+					<Title id="Title4" text="Currencies"/>
+					<ToolbarSpacer/>
+					<Button text="Non-routine" icon="sap-icon://add"/>
+				</Toolbar>
+				<Label text="Role"/>
+				<Button text="Add Role" icon="sap-icon://add"/>
+				<Select id="countd" selectedKey="{Country}">
+					<items>
+						<core:Item text="Pilot In Command" key="England"/>
+						<core:Item text="Second in Command" key="Germany"/>
+					</items>
+				</Select>
+				<Label text="Personnel"/>
+				<Select id="couffntd" selectedKey="{Country}">
+					<items>
+						<core:Item text="Richard" key="England"/>
+						<core:Item text="Second in Command" key="Germany"/>
+					</items>
+				</Select>
+				<Label text="Passengers"/>
+				<Button text="Add Passenger" icon="sap-icon://add"/>
+			</f:content>
+		</f:SimpleForm>
+		<Bar>
+			<contentRight>
+				<Button id="save" text="Save" type="Emphasized" visible="true" press="handleSavePress"/>
+				<Button id="cancel" text="Cancel" visible="true" press="handleCancelPress"/>
+			</contentRight>
+		</Bar>
+	</Dialog>
+</core:FragmentDefinition>

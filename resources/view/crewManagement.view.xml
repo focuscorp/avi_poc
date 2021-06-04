@@ -1,0 +1,151 @@
+<mvc:View controllerName="detectionAnomaly.app.controller.CardsLayout" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.f"
+	xmlns:w="sap.ui.integration.widgets" xmlns:cssgrid="sap.ui.layout.cssgrid" xmlns:unified="sap.ui.unified">
+	<f:ShellBar title="Crew Management" secondTitle="{/date}" homeIcon="{/homeIconUrl}" showCopilot="true" showSearch="true"
+		showNotifications="true" showProductSwitcher="true" notificationsNumber="2" class="sapUiSmallMarginTop sapUiSmallMarginBegin"></f:ShellBar>
+	<f:DynamicPage headerExpanded="{/headerExpanded}">
+		<!-- DynamicPage Title -->
+		<!-- DynamicPage Content -->
+		<f:content>
+			<IconTabBar id="idIconTabBar" select="handleIconTabBarSelect" headerBackgroundDesign="Transparent"
+				class="sapUiResponsiveContentPadding sapUiSmallMarginBegin">
+				<items>
+					<IconTabFilter text="Home">
+						<f:GridContainer>
+							<f:layout>
+								<f:GridContainerSettings rowSize="5rem" columnSize="5rem" gap="1rem"/>
+							</f:layout>
+							<f:layoutS>
+								<f:GridContainerSettings rowSize="5rem" columnSize="5rem" gap="0.5rem"/>
+							</f:layoutS>
+							<w:Card manifest="{manifests>/timeline}" action="onAction">
+								<w:layoutData>
+									<f:GridContainerItemLayoutData minRows="4" columns="4"/>
+								</w:layoutData>
+							</w:Card>
+							<w:Card manifest="{manifests>/object}" action="onAction">
+								<w:layoutData>
+									<f:GridContainerItemLayoutData minRows="4" columns="3"/>
+								</w:layoutData>
+							</w:Card>
+							<w:Card manifest="{/componentCardUrl}" action="onAction">
+								<w:layoutData>
+									<f:GridContainerItemLayoutData minRows="5" columns="6"/>
+								</w:layoutData>
+							</w:Card>
+							<w:Card manifest="{manifests>/calendar}" action="onAction">
+								<w:layoutData>
+									<f:GridContainerItemLayoutData minRows="4" columns="4"/>
+								</w:layoutData>
+							</w:Card>
+						</f:GridContainer>
+						<Title text="Incidents" titleStyle="H2" class="sapUiSmallMarginBottom sapUiSmallMarginTop sapUiSmallMarginBegin"/>
+						<f:GridContainer>
+							<f:layout>
+								<f:GridContainerSettings rowSize="5rem" columnSize="5rem" gap="1rem"/>
+							</f:layout>
+							<f:layoutS>
+								<f:GridContainerSettings rowSize="5rem" columnSize="5rem" gap="0.5rem"/>
+							</f:layoutS>
+							<w:Card manifest="{manifests>/stackedColumn}">
+								<w:layoutData>
+									<f:GridContainerItemLayoutData rows="5" columns="4"/>
+								</w:layoutData>
+							</w:Card>
+							<w:Card manifest="{manifests>/donut}">
+								<w:layoutData>
+									<f:GridContainerItemLayoutData rows="4" columns="4"/>
+								</w:layoutData>
+							</w:Card>
+							<w:Card manifest="{manifests>/list1}" baseUrl="./">
+								<w:layoutData>
+									<f:GridContainerItemLayoutData columns="4"/>
+								</w:layoutData>
+							</w:Card>
+							<w:Card manifest="{manifests>/list2}" baseUrl="./" action="onAction">
+								<w:layoutData>
+									<f:GridContainerItemLayoutData columns="4"/>
+								</w:layoutData>
+							</w:Card>
+						</f:GridContainer>
+					</IconTabFilter>
+					<IconTabFilter text="Crew List">
+						<Table class="sapUiResponsiveMargin" id="idTable" headerText="Employees List" updateFinished="_onTableUpdateFinished"
+							mode="SingleSelectMaster" selectionChange="onPressItem" width="auto" growing="true" growingThreshold="10">
+							<headerToolbar>
+								<OverflowToolbar>
+									<content>
+										<Title text="Employees List" level="H2"/>
+										<ToolbarSpacer/>
+									</content>
+								</OverflowToolbar>
+							</headerToolbar>
+							<columns>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="Employee Name"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="Role"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="Base"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="Activity"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="Activity Start"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="Activity End"/>
+								</Column>
+								<!--<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="Craft Type"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="Tail Number"/>
+					</Column>-->
+							</columns>
+							<items>
+								<ColumnListItem vAlign="Middle">
+									<cells>
+										<ObjectIdentifier title="{Model>/ContractNumber}" text="{Model>/ContractNumber}"/>
+										<ObjectStatus class="sapUiSmallMarginBottom" text="{Status}"/>
+										<ObjectIdentifier title="{Model>/ContractName}" text="On Time"/>
+										<ObjectIdentifier title="{Model>/EffectiveDate}" text="On Time"/>
+										<Text text="{Model>/ExpirationDate}"></Text>
+										<Text text="{Model>/ContractType}"></Text>
+										<!--	<Text text="{CraftType}"></Text>
+							<Text text="{TailNumber}"></Text>-->
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</IconTabFilter>
+					<IconTabFilter text="Team Distribution">
+						<VBox class="sapUiSmallMargin">
+							<PlanningCalendar id="PC1" showIntervalHeaders="false" startDate="{path: '/startDate'}" minDate="{path: '/minDate'}"
+								maxDate="{path: '/maxDate'}" rows="{path: '/people'}" appointmentsVisualization="Filled" appointmentSelect="handleAppointmentSelect">
+								<toolbarContent>
+									<Title text="Title" titleStyle="H4"/>
+								</toolbarContent>
+								<rows>
+									<PlanningCalendarRow icon="{pic}" title="{name}" text="{role}" appointments="{path : 'appointments', templateShareable: false}"
+										intervalHeaders="{path: 'headers', templateShareable: false}">
+										<appointments>
+											<unified:CalendarAppointment startDate="{start}" endDate="{end}" icon="{pic}" title="{title}" text="{info}" type="{type}"
+												tentative="{tentative}"></unified:CalendarAppointment>
+										</appointments>
+										<intervalHeaders>
+											<unified:CalendarAppointment startDate="{start}" endDate="{end}" icon="{pic}" title="{title}" type="{type}"></unified:CalendarAppointment>
+										</intervalHeaders>
+									</PlanningCalendarRow>
+								</rows>
+							</PlanningCalendar>
+						</VBox>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</f:content>
+		<!-- DynamicPage Footer -->
+	</f:DynamicPage>
+</mvc:View>

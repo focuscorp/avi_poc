@@ -1,0 +1,10 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc">
+	<VBox>
+		<OverflowToolbar design="Transparent" height="3rem">
+			<Title text="POSITIONAL TRACKING NOT AVAILABLE YET Tracking will begin after departure"/>
+		</OverflowToolbar>
+		<HBox width="100%">
+			<Image src="https://experience.sap.com/fiori-design-web/wp-content/uploads/sites/5/2015/06/flight-route.png"/>
+		</HBox>
+	</VBox>
+</core:FragmentDefinition>

@@ -1,0 +1,113 @@
+<mvc:View xmlns="sap.m" xmlns:viz="sap.viz.ui5.controls" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:f="sap.f" xmlns:suite="sap.suite.ui.commons"
+	xmlns:smartTable="sap.ui.comp.smarttable" xmlns:smartchart="sap.ui.comp.smartchart" controllerName="detectionAnomaly.app.controller.Main"
+	xmlns:mc="sap.suite.ui.microchart" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz.data="sap.viz.ui5.data">
+	<App id="app">
+		<pages>
+			<Page id="page" showHeader="false" showSubHeader="false" enableScrolling="true">
+				<f:ShellBar id="idShellBarOverview1" class="myShellbar" title="Budget Management" showCopilot="false" showSearch="false"
+					showNotifications="false" showProductSwitcher="false"/>
+				<content>
+					<Table class="sapUiResponsiveMargin" id="idTable" headerText="Total of Flights Hour (400)" updateFinished="_onTableUpdateFinished"
+						mode="SingleSelectMaster" selectionChange="onPressItem" width="auto" growing="true" growingThreshold="10">
+						<headerToolbar>
+							<OverflowToolbar>
+								<content>
+									<Title text="Total of Flights Hour (400)" level="H2"/>
+									<ToolbarSpacer/>
+								</content>
+							</OverflowToolbar>
+						</headerToolbar>
+						<columns>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="Name"/>
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="Currency"/>
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="Budget Period"/>
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="Date of Creation"/>
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="Owner"/>
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+								<Text text="Activity End"/>
+							</Column>
+							<!--<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="Craft Type"/>
+					</Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
+						<Text text="Tail Number"/>
+					</Column>-->
+						</columns>
+						<items>
+							<ColumnListItem vAlign="Middle">
+								<cells>
+									<ObjectIdentifier title="{Model>/ContractNumber}" text="{Model>/ContractNumber}"/>
+									<ObjectStatus class="sapUiSmallMarginBottom" text="{Status}"/>
+									<ObjectIdentifier title="{Model>/ContractName}" text="On Time"/>
+									<ObjectIdentifier title="{Model>/EffectiveDate}" text="On Time"/>
+									<Text text="{Model>/ExpirationDate}"></Text>
+									<Text text="{Model>/ContractType}"></Text>
+									<!--	<Text text="{CraftType}"></Text>
+							<Text text="{TailNumber}"></Text>-->
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+					<viz:VizFrame id="idVizFrame" height='100%' width="100%" vizType='donut'>
+						<viz:dataset>
+							<viz.data:FlattenedDataset data="{/milk}">
+								<viz.data:dimensions>
+									<viz.data:DimensionDefinition name="Store Name" value="{Store Name}"/>
+								</viz.data:dimensions>
+								<viz.data:measures>
+									<viz.data:MeasureDefinition name="Revenue" value="{Revenue}"/>
+								</viz.data:measures>
+							</viz.data:FlattenedDataset>
+						</viz:dataset>
+						<viz:feeds>
+							<viz.feeds:FeedItem uid="size" type="Measure" values="Revenue"/>
+							<viz.feeds:FeedItem uid="color" type="Dimension" values="Store Name"/>
+						</viz:feeds>
+					</viz:VizFrame>
+					<HBox>
+						<GenericTile header="Budget Management" subheader="Expenses By Region" frameType="TwoByOne" press="press" class="sapUiTinyMargin">
+							<TileContent footer="Unit, Notification" unit="EUR">
+								<mc:HarveyBallMicroChart total="100" size="Responsive" alignContent="Right" totalScale="Mrd">
+									<mc:items>
+										<mc:HarveyBallMicroChartItem fraction="15" color="Error" fractionScale="Mrd"/>
+									</mc:items>
+								</mc:HarveyBallMicroChart>
+							</TileContent>
+						</GenericTile>
+						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Fleet Management" press="onPress" subheader="">
+							<TileContent footer="Unit, Notification" unit="EUR">
+								<mc:HarveyBallMicroChart total="100" size="Responsive" alignContent="Right" totalScale="Mrd">
+									<mc:items>
+										<mc:HarveyBallMicroChartItem fraction="15" color="Error" fractionScale="Mrd"/>
+									</mc:items>
+								</mc:HarveyBallMicroChart>
+							</TileContent>
+						</GenericTile>
+						<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Flight Operations" subheader="Subtitle" press="onPress">
+							<TileContent footer="Unit, Notification" unit="EUR">
+								<mc:HarveyBallMicroChart total="100" size="Responsive" alignContent="Right" totalScale="Mrd">
+									<mc:items>
+										<mc:HarveyBallMicroChartItem fraction="15" color="Error" fractionScale="Mrd"/>
+									</mc:items>
+								</mc:HarveyBallMicroChart>
+							</TileContent>
+						</GenericTile>
+					</HBox>
+					<HBox></HBox>
+				</content>
+				<footer></footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

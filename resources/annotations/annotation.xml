@@ -1,0 +1,143 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+	<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Aggregation.V1.xml">
+		<edmx:Include Alias="Aggregation" Namespace="Org.OData.Aggregation.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Authorization.V1.xml">
+		<edmx:Include Alias="Auth" Namespace="Org.OData.Authorization.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml">
+		<edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470974/Common.xml?api=v2">
+		<edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470971/Communication.xml?api=v2">
+		<edmx:Include Alias="Communication" Namespace="com.sap.vocabularies.Communication.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+		<edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Measures.V1.xml">
+		<edmx:Include Alias="Measures" Namespace="Org.OData.Measures.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470968/UI.xml?api=v2">
+		<edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Validation.V1.xml">
+		<edmx:Include Alias="Validation" Namespace="Org.OData.Validation.V1"/>
+	</edmx:Reference>
+	<edmx:DataServices>
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm">
+			<Annotations Target="MockupModel.Scan/System" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
+					<Record>
+						<PropertyValue Property="Label" String="System"/>
+						<PropertyValue Property="CollectionPath" String="Systems"/>
+						<PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterOut">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="System"/>
+									<PropertyValue Property="ValueListProperty" String="SystemName"/>
+								</Record>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="SystemId"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="com.sap.vocabularies.Common.v1.FilterDefaultValue" String="SCP_Prod"/>
+			</Annotations>
+			<Annotations Target="MockupModel.Scan/Instance" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
+					<Record>
+						<PropertyValue Property="Label" String="Instance"/>
+						<PropertyValue Property="CollectionPath" String="Instances"/>
+						<PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterOut">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="Instance"/>
+									<PropertyValue Property="ValueListProperty" String="InstanceName"/>
+								</Record>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="InstanceId"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="com.sap.vocabularies.Common.v1.FilterDefaultValue" String="Cockpit Monitoring"/>
+			</Annotations>
+			<Annotations Target="MockupModel.Scan/Metric" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
+					<Record>
+						<PropertyValue Property="Label" String="Metric"/>
+						<PropertyValue Property="CollectionPath" String="Metrics"/>
+						<PropertyValue Property="SearchSupported" Bool="true"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterOut">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="Metric"/>
+									<PropertyValue Property="ValueListProperty" String="MetricName"/>
+								</Record>
+								<Record Type="com.sap.vocabularies.Common.v1.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="MetricId"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="com.sap.vocabularies.Common.v1.FilterDefaultValue" String="Log"/>
+			</Annotations>
+			<Annotations Target="MockupModel.Scan" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+				<Annotation Term="com.sap.vocabularies.UI.v1.Chart" Qualifier="StaticThresholds">
+					<Record>
+						<PropertyValue Property="ChartType" EnumMember="com.sap.vocabularies.UI.v1.ChartType/HeatMap"/>
+						<PropertyValue Property="Dimensions">
+							<Collection>
+								<PropertyPath>ScanDay</PropertyPath>
+								<PropertyPath>ScanHour</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Measures">
+							<Collection>
+								<PropertyPath>ScanStatus</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="MeasureAttributes">
+							<Collection>
+								<Record>
+									<PropertyValue Property="Measure" PropertyPath="ScanStatus"/>
+									<PropertyValue Property="Role" EnumMember="com.sap.vocabularies.UI.v1.ChartMeasureRoleType/Axis1"/>
+									<PropertyValue Property="DataPoint" AnnotationPath="@com.sap.vocabularies.UI.v1.DataPoint#StaticThresholds"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="DimensionAttributes">
+							<Collection>
+								<Record Type="com.sap.vocabularies.UI.v1.ChartDimensionAttributeType">
+									<PropertyValue Property="Dimension" PropertyPath="ScanHour"/>
+									<PropertyValue Property="Role" EnumMember="com.sap.vocabularies.UI.v1.ChartDimensionRoleType/Series"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="com.sap.vocabularies.UI.v1.DataPoint" Qualifier="StaticThresholds">
+					<Record Type="com.sap.vocabularies.UI.v1.DataPointType">
+						<PropertyValue Property="Value" Path="ScanStatus"/>
+						<PropertyValue Property="CriticalityCalculation">
+							<Record Type="com.sap.vocabularies.UI.v1.ImprovementDirectionType">
+								<PropertyValue Property="ImprovementDirection" EnumMember="com.sap.vocabularies.UI.v1.ImprovementDirectionType/Maximize"/>
+								<PropertyValue Property="ToleranceRangeLowValue" Decimal="3"/>
+								<PropertyValue Property="DeviationRangeLowValue" Decimal="2"/>
+							</Record>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

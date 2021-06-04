@@ -1,0 +1,10 @@
+[{
+    "MetricId": 0,
+    "MetricName": "Log"
+}, {
+    "MetricId": 1,
+    "MetricName": "CPU Usage"
+}, {
+    "MetricId": 2,
+    "MetricName": "Memory Usage"
+}]
