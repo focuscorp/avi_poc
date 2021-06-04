@@ -16,6 +16,7 @@ sap.ui.define([
 	 */
 	function (BaseController, JSONModel, Core, Filter, FilterOperator, Fragment, AnalyticMap) {
 		"use strict";
+
 		AnalyticMap.GeoJSONURL = "test-resources/sap/ui/vbm/demokit/media/analyticmap/L0.json";
 		return BaseController.extend("detectionAnomaly.app.controller.Main", {
 			onInit: function () {
